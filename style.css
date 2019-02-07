@@ -1,4 +1,4 @@
-.dot {
+.circle {
     height: 250px;
     width: 250px;
     background-color: red;
@@ -8,5 +8,5 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    visibility: visible;
+    visibility: hidden;
 }
