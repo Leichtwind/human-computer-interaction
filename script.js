@@ -1,8 +1,36 @@
 'use strict';
 
 class Timer {
+  /**
+   * @constructor
+   */
+  constructor() {
+    this.timer = null;
+  }
 
+  start() {
+    if (this.timer) {
+      return;
+    }
+
+    const textBoard = document.getElementById('textBoard');
+
+    let time = 0;
+    textBoard.innerText += time.toString();
+
+    this.timer = setInterval(() => {
+      time++;
+      textBoard.innerText = time.toString();
+    }, 1);
+  }
+
+  stop() {
+    clearInterval(this.timer);
+    // this.timer = null;
+  }
 }
+
+const timer = new Timer();
 
 document.onkeydown = ({ code }) => {
   switch (code) {
@@ -25,21 +53,29 @@ document.onkeyup = ({ code }) => {
 };
 
 function onSpaceDown() {
-  const time = Math.floor(Math.random() * 1000);
+  const time = randomInt(2000, 3000);
 
   setTimeoutPromise(time).then(() => {
-    document
-      .getElementById('myCircle')
-      .style.visibility = 'visible';
+    document.getElementById('myCircle').style.visibility = 'visible';
+    timer.start();
   });
 }
 
 function onSpaceUp() {
-
+  timer.stop();
 }
 
 function onF6Down() {
 
+}
+
+/**
+ * @param {Number} from
+ * @param {Number} to
+ * @return {number}
+ */
+function randomInt(from = 0, to = 10000) {
+  return Math.floor(from + Math.random() * (to - from));
 }
 
 /**
