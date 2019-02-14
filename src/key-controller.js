@@ -28,15 +28,17 @@ export default class {
 
     const time = Util.randomInt(2000, 3000);
 
-    this._myCircle.style.visibility = 'hidden';
-    this._latentField.innerText = 0;
-    this._motorField.innerText = 0;
+    this._myCircle.style['background-color'] = Util.getRandomColor();
+    this._myCircle.style['visibility'] = 'hidden';
+
+    this._latentField['innerText'] = 0;
+    this._motorField['innerText'] = 0;
 
     this._timeout = setTimeout(() => {
       this._myCircle.style.visibility = 'visible';
 
       this._latentTimer.start(time => {
-        this._latentField.innerText = time.toString();
+        this._latentField['innerText'] = time.toString();
       });
     }, time);
   }
@@ -52,7 +54,7 @@ export default class {
       this._latentTimer.stop();
 
       this._motorTimer.start(time => {
-        this._motorField.innerText = time.toString();
+        this._motorField['innerText'] = time.toString();
       });
     }
   }
